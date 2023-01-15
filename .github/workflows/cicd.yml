@@ -44,4 +44,7 @@ jobs:
       - name: Get pods
         run: kubectl get all -n kube-system
       - name: install grafana
-        run: helm search hub grafana
+        run: |
+          helm repo add grafana https://grafana.github.io/helm-charts
+          helm repo update
+          helm install my-release grafana/grafana-agent-operator
